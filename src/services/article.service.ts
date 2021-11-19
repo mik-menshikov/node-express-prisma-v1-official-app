@@ -26,11 +26,16 @@ const buildFindAllQuery = (query: any, username: string | undefined) => {
   }
 
   const authorQuery = {
-    author: {
-      OR: orAuthorQuery,
-      AND: andAuthorQuery,
-    },
+    author: {},
   };
+
+  if (orAuthorQuery.length) {
+    (authorQuery.author as any).OR = orAuthorQuery;
+  }
+
+  if (andAuthorQuery.length) {
+    (authorQuery.author as any).AND = andAuthorQuery;
+  }
 
   queries.push(authorQuery);
 
