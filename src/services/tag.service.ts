@@ -17,7 +17,7 @@ const getTags = async (username?: string): Promise<string[]> => {
         some: {},
         every: {
           author: {
-            OR: queries,
+            OR: queries.length ? queries : undefined,
           },
         },
       },
