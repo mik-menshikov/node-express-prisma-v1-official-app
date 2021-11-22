@@ -464,7 +464,7 @@ export const getCommentsByArticle = async (slug: string, username?: string) => {
     include: {
       comments: {
         where: {
-          OR: queries,
+          OR: queries.length ? queries : undefined,
         },
         select: {
           id: true,
